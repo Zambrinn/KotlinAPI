@@ -19,7 +19,12 @@ class StudyTopicService(
         val savedEntity = repository.save(entityToSave);
 
         return savedEntity.toResponse()
+    }
 
+    fun getAllTopics(): List<StudyTopicResponse> {
+        val allEntities: List<StudyTopic> = repository.findAll()
+
+        return allEntities.map { it.toResponse() }
     }
 
     private fun StudyTopic.toResponse(): StudyTopicResponse {

@@ -6,6 +6,7 @@ import com.github.Zambrinn.KotlinAPI.model.StudyTopic
 import com.github.Zambrinn.KotlinAPI.service.StudyTopicService
 import jakarta.validation.Valid
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -23,5 +24,10 @@ class StudyTopicController (
         val location = URI.create("/api/v1/study-topics/${topicResponse.id}")
 
         return ResponseEntity.created(location).body(topicResponse)
+    }
+
+    @GetMapping
+    fun listAllTopics(): List<StudyTopicResponse> {
+        return service.getAllTopics();
     }
 }
