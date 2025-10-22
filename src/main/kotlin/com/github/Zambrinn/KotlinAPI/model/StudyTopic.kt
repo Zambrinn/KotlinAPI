@@ -16,6 +16,6 @@ data class StudyTopic(
     var name: String,
     var category: String,
     @Enumerated(EnumType.STRING)
-    var status: StudyStatus = StudyStatus.PENDENT,
+    var status: StudyStatus = StudyStatus.PENDING,
     val creationDate: LocalDate = LocalDate.now()
 )

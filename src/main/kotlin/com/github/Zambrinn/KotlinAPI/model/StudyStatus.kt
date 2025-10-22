@@ -1,7 +1,7 @@
 package com.github.Zambrinn.KotlinAPI.model
 
 enum class StudyStatus {
-    PENDENT,
+    PENDING,
     IN_PROGRESS,
     COMPLETED
 }
