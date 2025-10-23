@@ -5,6 +5,7 @@ import com.github.Zambrinn.KotlinAPI.dto.StudyTopicResponse
 import com.github.Zambrinn.KotlinAPI.model.StudyTopic
 import org.springframework.stereotype.Service
 import com.github.Zambrinn.KotlinAPI.repository.StudyRepository;
+import org.springframework.data.repository.findByIdOrNull
 
 @Service
 class StudyTopicService(
@@ -25,6 +26,18 @@ class StudyTopicService(
         val allEntities: List<StudyTopic> = repository.findAll()
 
         return allEntities.map { it.toResponse() }
+    }
+
+    fun getTopicById(id: Long): StudyTopicResponse? {
+        val entityFound = repository.findByIdOrNull(id);
+
+        return entityFound?.toResponse();
+    }
+
+    fun deleteTopicById(id: Long): StudyTopicResponse? {
+        val entityToDelete = repository.deleteById(id)
+
+        return entityToDelete?.toResponse();
     }
 
     private fun StudyTopic.toResponse(): StudyTopicResponse {
